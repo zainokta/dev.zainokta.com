@@ -13,7 +13,7 @@ export function EducationSection() {
           <div className="mt-2">
             <h4 className="text-sm font-semibold">Final Project:</h4>
             <ul className="text-xs mt-1 space-y-1 list-disc pl-4">
-              <li>Project Management Tool To Optimize Git Flow Implementatoin in Scrum Game Development</li>
+              <li>Project Management Tool To Optimize Git Flow Implementation in Scrum Game Development</li>
             </ul>
             <h4 className="text-sm font-semibold">Relevant Coursework:</h4>
             <ul className="text-xs mt-1 space-y-1 list-disc pl-4">
