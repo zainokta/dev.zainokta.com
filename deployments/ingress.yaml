@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: console-landing-ingress
+  namespace: ichiban
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+spec:
+  tls:
+    - hosts:
+        - dev.zainokta.com
+      secretName: dev-zainokta-tls
+  ingressClassName: "traefik"
+  rules:
+    - host: dev.zainokta.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: console-landing-service
+                port:
+                  number: 80

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: console-landing-variables
+  namespace: ichiban
+data:
+  NODE_ENV: "production"

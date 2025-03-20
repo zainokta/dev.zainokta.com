@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: console-landing-service
+  namespace: ichiban
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: console-landing-service
+      component: ichiban
+  template:
+    metadata:
+      labels:
+        app: console-landing-service
+        component: ichiban
+    spec:
+      imagePullSecrets:
+        - name: harbor-credentials
+      containers:
+        - name: service
+          image: harbor.zainokta.com/ichiban/console-landing:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          env:
+            - name: NODE_ENV
+              value: "production"
+          resources:
+            limits:
+              memory: "128Mi"
+            requests:
+              cpu: "150m"
+              memory: "128Mi"
